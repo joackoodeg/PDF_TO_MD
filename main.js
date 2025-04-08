@@ -112,7 +112,7 @@ function createMenu() {
         {
           label: 'Documentación',
           click: async () => {
-            await shell.openExternal('https://github.com/TU_USUARIO/pdf-to-md-app');
+            await shell.openExternal('https://github.com/joackoodeg/pdf-to-md-app');
           }
         }
       ]

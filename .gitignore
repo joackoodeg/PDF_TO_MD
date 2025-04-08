@@ -1,2 +1,8 @@
 node_modules/
 package-lock.json
+assets/
+build/
+python-dist/
+venv
+dist/
+test-encoding.bat
