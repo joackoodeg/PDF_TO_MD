@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['C:\\Users\\Kleein\\Documents\\pdftomd\\venv\\Scripts\\python.exe'],
+    ['entry_point.py'],
     pathex=[],
     binaries=[],
     datas=[],
