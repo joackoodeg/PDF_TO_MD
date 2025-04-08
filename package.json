@@ -1,37 +1,81 @@
 {
   "name": "pdf-to-md-app",
   "version": "1.0.0",
-  "description": "An application to convert PDF files to Markdown.",
+  "description": "Una aplicación para convertir archivos PDF a formato Markdown.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "cross-env NODE_ENV=development electron .",
+    "package": "electron-builder --win --x64",
+    "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "appId": "com.tunombre.pdfmarkdown",
-    "productName": "PDF to Markdown",
+    "appId": "com.tuusuario.pdftomarkdown",
+    "productName": "PDF a Markdown",
     "files": [
       "**/*",
       "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
       "!**/node_modules/.bin",
-      "!**/*.map"
+      "!**/*.map",
+      "!**/.git/**",
+      "!**/venv/**"
     ],
     "extraResources": [
       {
-        "from": "./converter.py",
+        "from": "python-dist",
+        "to": "python",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "converter.py",
         "to": "converter.py"
       },
       {
-        "from": "path/to/python.exe",
-        "to": "python/python.exe"
+        "from": "requirements.txt",
+        "to": "requirements.txt"
       }
     ],
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "PDF a Markdown"
+    },
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
     }
   },
-  "author": "Your Name",
+  "keywords": [
+    "pdf",
+    "markdown",
+    "converter",
+    "electron",
+    "desktop"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "electron": "^28.0.0",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0"
   }
 }
