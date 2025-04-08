@@ -28,12 +28,6 @@ if %ERRORLEVEL% neq 0 (
 )
 
 echo.
-echo Dependencias verificadas.
-echo.
-echo Por favor arrastra un archivo PDF a esta ventana y pulsa Enter:
-set /p pdf_file="> "
-
-echo.
 echo Convirtiendo %pdf_file% a Markdown con codificación UTF-8...
 
 REM Ejecutar la conversión con codificación UTF-8 forzada
@@ -54,4 +48,10 @@ if %ERRORLEVEL% equ 0 (
 )
 
 echo.
-pause
+pause Dependencias verificadas.
+echo.
+echo Por favor arrastra un archivo PDF a esta ventana y pulsa Enter:
+set /p pdf_file="> "
+
+echo.
+echo
