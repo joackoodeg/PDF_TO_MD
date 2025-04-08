@@ -1,0 +1,37 @@
+{
+  "name": "pdf-to-md-app",
+  "version": "1.0.0",
+  "description": "An application to convert PDF files to Markdown.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "com.tunombre.pdfmarkdown",
+    "productName": "PDF to Markdown",
+    "files": [
+      "**/*",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/.bin",
+      "!**/*.map"
+    ],
+    "extraResources": [
+      {
+        "from": "./converter.py",
+        "to": "converter.py"
+      },
+      {
+        "from": "path/to/python.exe",
+        "to": "python/python.exe"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "author": "Your Name",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}
